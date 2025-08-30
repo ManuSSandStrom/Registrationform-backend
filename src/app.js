@@ -1,5 +1,5 @@
-﻿import express from 'express';
-// import cors from 'cors';
+import express from 'express';
+import cors from 'cors';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import compression from 'compression';
@@ -21,15 +21,11 @@ app.set('trust proxy', 1);
 // Security headers
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 
-// CORS
-const cors = require("cors");
-
-// If you want to allow all origins:
+// ✅ CORS (allow all origins, supports credentials)
 app.use(cors({
-  origin: true,   // Reflect request origin (works like "*", but supports credentials)
+  origin: true,   // reflects request origin
   credentials: true
 }));
-
 
 // Body parsing + logging
 app.use(express.json({ limit: '2mb' }));
